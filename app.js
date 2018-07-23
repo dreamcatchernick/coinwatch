@@ -38,8 +38,8 @@ async function run() {
     console.log(bittrexBuyMessage);
     console.log('套利:' + isBinanceSellPriceLowerThanBittrexBuyPrice);
     console.log('================================');
-    console.log(bittrexSellPrice);
-    console.log(binanceBuyPrice);
+    console.log(bittrexSellMessage);
+    console.log(binanceBuyMessage);
     console.log('套利:' + isBittrexSellPriceLowerThanBinanceBuyPrice);
 }
 
