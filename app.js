@@ -30,7 +30,8 @@ async function run() {
     const binanceBuyMessage = `Binance buy  price:${binanceBuyPrice} , amount:${binanceBuyAmount}`;
     const binanceSellMessage = `Binance sell price:${binanceSellPrice} , amount:${binanceSellAmount}`;
 
-    console.log('================================');
+    console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~');
+    console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~');
     console.log(bittrexBuyMessage);
     console.log(binanceSellMessage);
     console.log('================================');
@@ -47,4 +48,4 @@ function toPrecision(num, decimalPlace) {
     return Number(num).toFixed(decimalPlace);
 }
 
-setInterval(run, 4000);
+setInterval(run, 10000);
