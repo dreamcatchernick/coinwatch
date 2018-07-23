@@ -29,8 +29,8 @@ async function run() {
     const binanceBuyMessage = `Binance buy  price:${binanceBuyPrice} , amount:${binanceBuyAmount}`;
     const binanceSellMessage = `Binance sell price:${binanceSellPrice} , amount:${binanceSellAmount}`;
 
-    const isBinanceSellPriceLowerThanBittrexBuyPrice = binanceSellPrice < bittrexBuyPrice;
-    const isBittrexSellPriceLowerThanBinanceBuyPrice = bittrexSellPrice < binanceBuyPrice;
+    const isBinanceSellPriceLowerThanBittrexBuyPrice = binanceSellPrice - bittrexBuyPrice;
+    const isBittrexSellPriceLowerThanBinanceBuyPrice = bittrexSellPrice - binanceBuyPrice;
 
     console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~');
     console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~');
