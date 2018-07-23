@@ -6,26 +6,31 @@ async function run() {
     const bittrexResponse = await getPrice(bittrex);
 
     const bittrexData = bittrexResponse.result;
-    const bittrexBuyPrice = bittrexData.buy[0].Rate;
+    let bittrexBuyPrice = bittrexData.buy[0].Rate;
+    bittrexBuyPrice = toPrecision(bittrexBuyPrice , 5);
     const bittrexBuyAmount = bittrexData.buy[0].Quantity;
 
-    const bittrexSellPrice = bittrexData.sell[0].Rate;
+    let bittrexSellPrice = bittrexData.sell[0].Rate;
+    bittrexSellPrice = toPrecision(bittrexSellPrice, 5);
     const bittrexSellAmount = bittrexData.sell[0].Quantity;
-
-    const bittrexBuyMessage = `Bittrex buy price:${bittrexBuyPrice} , amount:${bittrexBuyAmount}`;
+    
+    const bittrexBuyMessage = `Bittrex buy  price:${bittrexBuyPrice} , amount:${bittrexBuyAmount}`;
     const bittrexSellMessage = `Bittrex sell price:${bittrexSellPrice} , amount:${bittrexSellAmount}`;
 
 
     const binanceResponse = await getPrice(binance);
-    const binanceBuyPrice = binanceResponse.bids[0][0];
+    let binanceBuyPrice = binanceResponse.bids[0][0];
+    binanceBuyPrice = toPrecision(binanceBuyPrice , 5);
     const binanceBuyAmount = binanceResponse.bids[0][1];
 
-    const binanceSellPrice = binanceResponse.asks[0][0];
+    let binanceSellPrice = binanceResponse.asks[0][0];
+    binanceSellPrice = toPrecision(binanceSellPrice, 5);
     const binanceSellAmount = binanceResponse.asks[0][1];
 
-    const binanceBuyMessage = `Binance buy price:${binanceBuyPrice} , amount:${binanceBuyAmount}`;
+    const binanceBuyMessage = `Binance buy  price:${binanceBuyPrice} , amount:${binanceBuyAmount}`;
     const binanceSellMessage = `Binance sell price:${binanceSellPrice} , amount:${binanceSellAmount}`;
 
+    console.log('================================');
     console.log(bittrexBuyMessage);
     console.log(binanceSellMessage);
     console.log('================================');
@@ -36,6 +41,10 @@ async function run() {
 async function getPrice(url) {
     const response = await axios.get(url);
     return response.data;
+}
+
+function toPrecision(num, decimalPlace) {
+    return Number(num).toFixed(decimalPlace);
 }
 
 setInterval(run, 4000);
