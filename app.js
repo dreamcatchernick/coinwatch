@@ -17,7 +17,6 @@ async function run() {
     const bittrexBuyMessage = `Bittrex buy  price:${bittrexBuyPrice} , amount:${bittrexBuyAmount}`;
     const bittrexSellMessage = `Bittrex sell price:${bittrexSellPrice} , amount:${bittrexSellAmount}`;
 
-
     const binanceResponse = await getPrice(binance);
     let binanceBuyPrice = binanceResponse.bids[0][0];
     binanceBuyPrice = toPrecision(binanceBuyPrice , 5);
@@ -30,13 +29,16 @@ async function run() {
     const binanceBuyMessage = `Binance buy  price:${binanceBuyPrice} , amount:${binanceBuyAmount}`;
     const binanceSellMessage = `Binance sell price:${binanceSellPrice} , amount:${binanceSellAmount}`;
 
+    const isBinanceSellPriceLowerThanBittrexBuyPrice = binanceSellPrice < bittrexBuyPrice;
+    const isBittrexSellPriceLowerThanBinanceBuyPrice = bittrexSellPrice < binanceBuyPrice;
+
     console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~');
     console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~');
-    console.log(bittrexBuyMessage);
     console.log(binanceSellMessage);
+    console.log('套利:' + isBinanceSellPriceLowerThanBittrexBuyPrice);
+    console.log(bittrexBuyMessage);
+    console.log('套利:' + isBittrexSellPriceLowerThanBinanceBuyPrice);
     console.log('================================');
-    console.log(bittrexSellMessage);
-    console.log(binanceBuyMessage);
 }
 
 async function getPrice(url) {
@@ -48,4 +50,4 @@ function toPrecision(num, decimalPlace) {
     return Number(num).toFixed(decimalPlace);
 }
 
-setInterval(run, 10000);
+setInterval(run, 5000);
