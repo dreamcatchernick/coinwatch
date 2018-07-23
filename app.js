@@ -35,10 +35,12 @@ async function run() {
     console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~');
     console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~');
     console.log(binanceSellMessage);
-    console.log('套利:' + isBinanceSellPriceLowerThanBittrexBuyPrice);
     console.log(bittrexBuyMessage);
-    console.log('套利:' + isBittrexSellPriceLowerThanBinanceBuyPrice);
+    console.log('套利:' + isBinanceSellPriceLowerThanBittrexBuyPrice);
     console.log('================================');
+    console.log(bittrexSellPrice);
+    console.log(binanceBuyPrice);
+    console.log('套利:' + isBittrexSellPriceLowerThanBinanceBuyPrice);
 }
 
 async function getPrice(url) {
