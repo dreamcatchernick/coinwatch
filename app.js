@@ -7,11 +7,11 @@ async function run() {
 
     const bittrexData = bittrexResponse.result;
     let bittrexBuyPrice = bittrexData.buy[0].Rate;
-    bittrexBuyPrice = toPrecision(bittrexBuyPrice , 5);
+    bittrexBuyPrice = toPrecision(bittrexBuyPrice , 6);
     const bittrexBuyAmount = bittrexData.buy[0].Quantity;
 
     let bittrexSellPrice = bittrexData.sell[0].Rate;
-    bittrexSellPrice = toPrecision(bittrexSellPrice, 5);
+    bittrexSellPrice = toPrecision(bittrexSellPrice, 6);
     const bittrexSellAmount = bittrexData.sell[0].Quantity;
     
     const bittrexBuyMessage = `Bittrex buy  price:${bittrexBuyPrice} , amount:${bittrexBuyAmount}`;
@@ -19,11 +19,11 @@ async function run() {
 
     const binanceResponse = await getPrice(binance);
     let binanceBuyPrice = binanceResponse.bids[0][0];
-    binanceBuyPrice = toPrecision(binanceBuyPrice , 5);
+    binanceBuyPrice = toPrecision(binanceBuyPrice , 6);
     const binanceBuyAmount = binanceResponse.bids[0][1];
 
     let binanceSellPrice = binanceResponse.asks[0][0];
-    binanceSellPrice = toPrecision(binanceSellPrice, 5);
+    binanceSellPrice = toPrecision(binanceSellPrice, 6);
     const binanceSellAmount = binanceResponse.asks[0][1];
 
     const binanceBuyMessage = `Binance buy  price:${binanceBuyPrice} , amount:${binanceBuyAmount}`;
